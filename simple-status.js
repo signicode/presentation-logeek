@@ -7,11 +7,14 @@ const scramjet = require("scramjet");
 
 const options = require("yargs").argv;
 
+let port = 8081;
 const cfg = {};
+
 if (options._.length) cfg.track = options._;
 if (options.loc) cfg.locations =  options.loc;
 if (options.follow) cfg.follow =  options.follow;
 if (options.lang) cfg.language =  options.lang;
+if (options.port) port =  options.port;
 
 console.log("Crunching tweets for... ", cfg);
 
@@ -72,4 +75,4 @@ new TwitJet(require('../twitter-config.json'))
     )
 ;
 
-push.start(8081, 1e3);
+push.start(port, 1e3);
