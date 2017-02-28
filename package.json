@@ -1,0 +1,23 @@
+{
+  "name": "logeek-presentation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michalcz/presentation-logeek.git"
+  },
+  "author": "Signicode <cz@signicode.com>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "movwin": "git+ssh://git@github.com/MichalCz/scramjet-window.git",
+    "opn": "^4.0.2",
+    "scramjet": "^2.5.0",
+    "socket.io": "^1.7.2",
+    "twit": "^2.2.5",
+    "yargs": "^6.6.0"
+  }
+}

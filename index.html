@@ -1,0 +1,111 @@
+<html lang="en">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<style type="text/css">
+    body {
+        postion: relative;
+        font-family: "Lato", sans-serif;
+    }
+
+    body>div {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #eff0f1;
+    }
+
+    item {
+        margin-top: 5vh;
+        margin-left: 4.5vw;
+        display: inline-block;
+        width: 27vw;
+        text-align: center;
+        background: #fff;
+        box-shadow: 4px 4px 8px rgba(0,0,0,.5);
+    }
+
+    label {
+        display: block;
+        font-size: 3vw;
+        padding: .4em 0;
+        color: #6a67ce;
+    }
+
+    count {
+        display: block;
+        margin-top: .5vw;
+        font-size: 1vw;
+        padding-bottom: 15vh;
+    }
+
+    entry {
+        text-align: left;
+        display: block;
+        padding-bottom: .2em;
+    }
+
+    entry > cnt {
+        width: 5em;
+        display: inline-block;
+        text-align: right;
+    }
+
+    entry > val {
+        padding-left: 2em;
+    }
+
+</style>
+
+<body>
+    <div>
+        <item id="v300">
+            <label>5 minutes</label>
+            <count></count>
+        </item>
+        <item id="v900">
+            <label>15 minutes</label>
+            <count></count>
+        </item>
+        <item id="v3600">
+            <label>1 hour</label>
+            <count></count>
+        </item>
+    </div>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var labels = document.querySelectorAll('item > label'),
+        counts = document.querySelectorAll('item > count'),
+        total = document.querySelector('total'),
+        needle = document.querySelector('#needle')
+    ;
+
+    var escapeHTML = function(unsafe) {
+      return unsafe.replace(/[&<"']/g, function(m) {
+        switch (m) {
+          case '&':
+            return '&amp;';
+          case '<':
+            return '&lt;';
+          case '"':
+            return '&quot;';
+          default:
+            return '&#039;';
+        }
+      });
+    };
+
+    const write = (span, data) => {
+        document.querySelector('item#'+span+' > count').innerHTML = data.map(
+            (entry) => '<entry><cnt>'+(+entry[1])+'</cnt><val>'+escapeHTML(entry[0])+'</val></entry>'
+        ).join("");
+    }
+
+    var update = (data) => {
+        for (const span in data)
+            write(span, data[span]);
+    };
+
+    io().on("data", update)
+</script>
