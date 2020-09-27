@@ -2,7 +2,7 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <style type="text/css">
     body {
-        postion: relative;
+        position: relative;
         font-family: "Lato", sans-serif;
     }
 
@@ -58,17 +58,9 @@
 </style>
 
 <body>
-    <div>
-        <item id="v300">
-            <label>5 minutes</label>
-            <count></count>
-        </item>
-        <item id="v900">
-            <label>15 minutes</label>
-            <count></count>
-        </item>
-        <item id="v3600">
-            <label>1 hour</label>
+    <div id="spans">
+        <item id="loading">
+            <label>LOADING...</label>
             <count></count>
         </item>
     </div>
@@ -102,9 +94,22 @@
         ).join("");
     }
 
+    const spans = document.querySelector("#spans");
+    const div = document.createElement("div")
+
     var update = (data) => {
-        for (const span in data)
+        document.querySelectorAll("#spans item").forEach(
+            x => Object.keys(data).includes(x.id) || x.parentNode.removeChild(x)
+        );
+
+        for (const span in data) {
+            if (!document.querySelector('item#'+span)) {
+                const minutes = +span.substr(1) / 60;
+                div.innerHTML = `<item id="${span}"><label>minutes: ${minutes}</label><count></count></item>`
+                spans.appendChild(div.firstElementChild);
+            }
             write(span, data[span]);
+        }
     };
 
     io().on("data", update)

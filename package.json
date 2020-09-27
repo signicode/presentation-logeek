@@ -12,8 +12,11 @@
   },
   "author": "Signicode <cz@signicode.com>",
   "license": "AGPL-3.0",
+  "engines": {
+    "node": ">=12"
+  },
   "dependencies": {
-    "movwin": "git+ssh://git@github.com/MichalCz/scramjet-window.git",
+    "movwin": "git+http://github.com/MichalCz/scramjet-window.git",
     "opn": "^6.0.0",
     "scramjet": "^4.34.7",
     "socket.io": "^2.3.0",
