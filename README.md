@@ -29,6 +29,17 @@ Anything you like to look for it'll go to Twitter and crunch the similar hashtag
 
 Oh, and please do fork!
 
+Samples
+---------
+
+```
+# Hashtags from Poland
+./simple-status.js --location=14.074,49.027,24.029,54.851
+
+# Hashtags on US Elections with mentions
+./simple-status.js --mentions=true 'biden' 'trump'
+```
+
 License
 --------
 
