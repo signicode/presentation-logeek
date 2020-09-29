@@ -13,7 +13,7 @@ Before you do anything, get your twitter secrets in a JSON file much like this o
       "access_token_secret": "UGo021bOUGBJUOQWGF2"
     }
 
-and put it in the directory above this one as `twitter-config.json`.
+and put it in the directory you cloned this repo to as: `twitter-config.json`.
 
 Then install dependencies:
 
