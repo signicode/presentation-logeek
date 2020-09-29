@@ -15,6 +15,10 @@ Before you do anything, get your twitter secrets in a JSON file much like this o
 
 and put it in the directory above this one as `twitter-config.json`.
 
+Then install dependencies:
+
+    npm i
+
 To run the sample do:
 
     node ./simple-status.js [--location=<geo_bbox>] [--lang=<iso-631-2-letter>] tag [tag...]
