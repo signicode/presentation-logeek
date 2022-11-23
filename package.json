@@ -19,7 +19,7 @@
     "movwin": "git+http://github.com/MichalCz/scramjet-window.git",
     "opn": "^6.0.0",
     "scramjet": "^4.34.7",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.5.0",
     "twit": "^2.2.5",
     "yargs": "^16.0.3"
   },
